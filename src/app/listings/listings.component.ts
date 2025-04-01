@@ -11,7 +11,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 })
 export class ListingsComponent implements OnInit {
   allListings = [
-    { id: 1, title: 'Cobalt 2 Pozitsiya', price: '12,000 USD', location: 'Toshkent', image: 'assets/cars/car1.jfif', category: 'yengil-avtomobillar' },
+    { id: 1, title: 'Honda 2 Pozitsiya', price: '12,000 USD', location: 'Toshkent', image: 'assets/cars/car1.jfif', category: 'yengil-avtomobillar' },
     { id: 2, title: 'Lacetti 1 Pozitsiya', price: '10,500 USD', location: 'Samarqand', image: 'assets/cars/car2.jfif', category: 'yengil-avtomobillar' },
     { id: 3, title: 'Spark 4 Pozitsiya', price: '9,000 USD', location: 'Buxoro', image: 'assets/cars/car3.jfif', category: 'yengil-avtomobillar' },
     { id: 4, title: 'Shina almashtirish', price: '100,000 UZS', location: 'Andijon', image: 'assets/services/images1.jfif', category: 'xizmatlar' },
