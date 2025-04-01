@@ -1,0 +1,55 @@
+<h1>Aloqa</h1>
+    <hr>
+    <p>Biz bilan bog'lanish uchun quyidagi formani to'ldiring yoki ko'rsatilgan ma'lumotlardan foydalaning.</p>
+
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Bog'lanish Formasi</h3>
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="name" class="form-label">Ismingiz</label>
+            <input type="text" class="form-control" id="name" formControlName="name" required>
+                <div *ngIf="contactForm.get('name')?.invalid && (contactForm.get('name')?.dirty || contactForm.get('name')?.touched)">
+
+              Ism kiritilishi shart.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email Manzilingiz</label>
+            <input type="email" class="form-control" id="email" formControlName="email" required><div *ngIf="contactForm.get('email')?.invalid && (contactForm.get('email')?.dirty || contactForm.get('email')?.touched)">
+               <span *ngIf="contactForm.get('email')?.errors?.['required']">Email kiritilishi shart.</span>
+               <span *ngIf="contactForm.get('email')?.errors?.['email']">Yaroqli email manzil kiriting.</span>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="subject" class="form-label">Mavzu</label>
+            <input type="text" class="form-control" id="subject" formControlName="subject" required>
+            <div *ngIf="contactForm.get('subject')?.invalid && (contactForm.get('subject')?.dirty || contactForm.get('subject')?.touched)">
+
+              Mavzu kiritilishi shart.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Xabar</label>
+            <textarea class="form-control" id="message" rows="5" formControlName="message" required></textarea>
+            <div *ngIf="contactForm.get('message')?.invalid && (contactForm.get('message')?.dirty || contactForm.get('message')?.touched)">
+
+              Xabar kiritilishi shart.
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid">Yuborish</button>
+        </form>
+      </div>
+      <div class="col-md-6">
+        <h3>Bizning Manzilimiz</h3>
+        <p>
+          <strong>Manzil:</strong> Toshkent sh., Sergeli t., PDP University<br>
+          <strong>Telefon:</strong> +998 94 024 08 73<br>
+          <strong>Email:</strong> jaloliddin630&#64;gmail.com
+        </p>
+        <!-- Bu yerga xarita (map) qo'shish mumkin -->
+        <div style="height: 300px; background-color: #e9ecef; display: flex; align-items: center; justify-content: center; color: #6c757d;">
+          Xarita uchun joy
+        </div>
+      </div>
+    </div>

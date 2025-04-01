@@ -1,0 +1,7 @@
+/* Add create-ad page specific styles here if needed */
+.form-label .text-danger {
+    font-size: 0.8em; /* Make asterisk slightly smaller */
+  }
+  .text-danger.small {
+    font-size: 0.875em;
+  }

@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h1 class="card-title text-center mb-4">Kirish</h1>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+            <!-- Email -->
+            <div class="mb-3">
+              <label for="email" class="form-label">Email Manzil</label>
+              <input type="email" class="form-control" id="email" formControlName="email" placeholder="email@example.com">
+              <div *ngIf="f['email'].invalid && (f['email'].dirty || f['email'].touched)" class="text-danger small">
+                <span *ngIf="f['email'].errors?.['required']">Email kiritilishi shart.</span>
+                <span *ngIf="f['email'].errors?.['email']">Yaroqli email manzil kiriting.</span>
+              </div>
+            </div>
+
+            <!-- Password -->
+            <div class="mb-3">
+              <label for="password" class="form-label">Parol</label>
+              <input type="password" class="form-control" id="password" formControlName="password">
+               <div *ngIf="f['password'].invalid && (f['password'].dirty || f['password'].touched)" class="text-danger small">
+                Parol kiritilishi shart.
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Kirish</button>
+            </div>
+
+            <hr>
+
+            <p class="text-center mb-0">
+              Hisobingiz yo'qmi? <a routerLink="/register">Ro'yxatdan o'tish</a>
+            </p>
+            <!-- Add forgot password link if needed -->
+            <!-- <p class="text-center mt-2">
+              <a href="#">Parolni unutdingizmi?</a>
+            </p> -->
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

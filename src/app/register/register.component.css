@@ -1,0 +1,9 @@
+.row.justify-content-center {
+    padding-top: 3rem; /* Add some space from the top */
+  }
+  .card {
+    border: none; /* Remove default card border */
+  }
+   .text-danger.small {
+    font-size: 0.875em;
+  }
