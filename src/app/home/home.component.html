@@ -1,42 +1,107 @@
-<div class="p-5 mb-4 bg-light rounded-3">
-    <div class="container-fluid py-5">
-      <h1 class="display-5 fw-bold"><strong style="color: blue;">avtoeloncha</strong> ga Xush Kelibsiz!</h1>
-      <p class="col-md-8 fs-4">Bu yerda siz avtomobillar, ehtiyot qismlar va xizmatlar bo'yicha e'lonlarni topishingiz mumkin.</p>
-      <!-- Barcha e'lonlarga link -->
-      <a routerLink="/listings" class="btn btn-primary btn-lg">Barcha E'lonlarni Ko'rish</a>
+<!-- Hero Section -->
+<div class="hero-section text-center text-white py-5 mb-5 rounded">
+    <div class="container">
+      <h1 class="display-4 fw-bold mb-3">O'zbekistondagi Eng Katta Avto E'lonlar Bazasi</h1>
+      <p class="lead mb-4 col-lg-8 mx-auto">
+        Minglab yangi va ishlatilgan avtomobillar, ehtiyot qismlar va xizmatlar sizni kutmoqda. O'zingizga mosini toping yoki o'zingiznikini soting!
+      </p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <a routerLink="/listings" class="btn btn-warning btn-lg px-4 gap-3">Barcha E'lonlar</a>
+        <a routerLink="/create-ad" class="btn btn-outline-light btn-lg px-4">E'lon Berish</a>
+      </div>
     </div>
   </div>
 
-  <h2>Mashhur Kategoriyalar</h2>
-  <div class="row">
-    <div class="col-md-4 mb-3">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Yengil Avtomobillar</h5>
-          <p class="card-text">Eng so'nggi yengil avtomobil e'lonlari.</p>
-          <!-- Yangilangan link -->
-          <a routerLink="/listings/yengil-avtomobillar" class="btn btn-secondary">Ko'rish</a>
+  <!-- Popular Categories Section -->
+  <div class="container mb-5">
+    <h2 class="text-center mb-4 fw-light">Mashhur Kategoriyalar</h2>
+    <div class="row g-4">
+      <!-- Yengil Avtomobillar -->
+      <div class="col-md-4">
+        <div class="card category-card h-100 shadow-sm border-0">
+           <div class="card-body text-center">
+             <i class="bi bi-car-front-fill display-4 text-primary mb-3"></i>
+             <h5 class="card-title">Yengil Avtomobillar</h5>
+             <p class="card-text text-muted small">Eng so'nggi yengil avtomobil e'lonlari.</p>
+             <a routerLink="/listings/yengil-avtomobillar" class="btn btn-outline-primary stretched-link mt-auto">Ko'rish <i class="bi bi-arrow-right-short"></i></a>
+           </div>
+        </div>
+      </div>
+      <!-- Ehtiyot Qismlar -->
+      <div class="col-md-4">
+        <div class="card category-card h-100 shadow-sm border-0">
+           <div class="card-body text-center">
+              <i class="bi bi-tools display-4 text-success mb-3"></i>
+             <h5 class="card-title">Ehtiyot Qismlar</h5>
+             <p class="card-text text-muted small">Avtomobilingiz uchun kerakli barcha qismlar.</p>
+             <a routerLink="/listings/ehtiyot-qismlar" class="btn btn-outline-success stretched-link mt-auto">Ko'rish <i class="bi bi-arrow-right-short"></i></a>
+           </div>
+        </div>
+      </div>
+      <!-- Xizmatlar -->
+      <div class="col-md-4">
+        <div class="card category-card h-100 shadow-sm border-0">
+           <div class="card-body text-center">
+             <i class="bi bi-wrench-adjustable-circle-fill display-4 text-info mb-3"></i>
+             <h5 class="card-title">Xizmatlar</h5>
+             <p class="card-text text-muted small">Avto ta'mirlash, moy almashtirish va boshqalar.</p>
+             <a routerLink="/listings/xizmatlar" class="btn btn-outline-info stretched-link mt-auto">Ko'rish <i class="bi bi-arrow-right-short"></i></a>
+           </div>
         </div>
       </div>
     </div>
-    <div class="col-md-4 mb-3">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Ehtiyot Qismlar</h5>
-          <p class="card-text">Avtomobilingiz uchun ehtiyot qismlar.</p>
-           <!-- Yangilangan link -->
-          <a routerLink="/listings/ehtiyot-qismlar" class="btn btn-secondary">Ko'rish</a>
-        </div>
+  </div>
+
+  <!-- Latest Listings Section (Placeholder Structure) -->
+  <div class="container mb-5">
+      <h2 class="text-center mb-4 fw-light">So'nggi E'lonlar</h2>
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+          <!-- Placeholder Card 1 -->
+          <div class="col">
+              <div class="card h-100 shadow-sm listing-card">
+                  <img src="assets/cars/car1.jfif" class="card-img-top" alt="...">
+                  <div class="card-body d-flex flex-column">
+                      <h6 class="card-title flex-grow-1"><a href="#" class="stretched-link text-decoration-none text-dark">Cobalt 2 Pozitsiya (Placeholder)</a></h6>
+                      <p class="card-text fw-bold text-primary mb-1">12,000 USD</p>
+                      <small class="text-muted"><i class="bi bi-geo-alt-fill"></i> Toshkent</small>
+                  </div>
+              </div>
+          </div>
+          <!-- Placeholder Card 2 -->
+           <div class="col">
+              <div class="card h-100 shadow-sm listing-card">
+                  <img src="assets/cars/car2.jfif" class="card-img-top" alt="...">
+                  <div class="card-body d-flex flex-column">
+                      <h6 class="card-title flex-grow-1"><a href="#" class="stretched-link text-decoration-none text-dark">Lacetti 1 Pozitsiya (Placeholder)</a></h6>
+                      <p class="card-text fw-bold text-primary mb-1">10,500 USD</p>
+                      <small class="text-muted"><i class="bi bi-geo-alt-fill"></i> Samarqand</small>
+                  </div>
+              </div>
+          </div>
+          <!-- Placeholder Card 3 -->
+           <div class="col">
+              <div class="card h-100 shadow-sm listing-card">
+                  <img src="assets/cars/car3.jfif" class="card-img-top" alt="...">
+                  <div class="card-body d-flex flex-column">
+                      <h6 class="card-title flex-grow-1"><a href="#" class="stretched-link text-decoration-none text-dark">Motor moyi Shell (Placeholder)</a></h6>
+                      <p class="card-text fw-bold text-primary mb-1">50 USD</p>
+                      <small class="text-muted"><i class="bi bi-geo-alt-fill"></i> Toshkent</small>
+                  </div>
+              </div>
+          </div>
+           <!-- Placeholder Card 4 -->
+           <div class="col">
+              <div class="card h-100 shadow-sm listing-card">
+                  <img src="assets/cars/car4.jfif" class="card-img-top" alt="...">
+                  <div class="card-body d-flex flex-column">
+                      <h6 class="card-title flex-grow-1"><a href="#" class="stretched-link text-decoration-none text-dark">Shina almashtirish (Placeholder)</a></h6>
+                      <p class="card-text fw-bold text-primary mb-1">100,000 UZS</p>
+                      <small class="text-muted"><i class="bi bi-geo-alt-fill"></i> Andijon</small>
+                  </div>
+              </div>
+          </div>
       </div>
-    </div>
-    <div class="col-md-4 mb-3">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Xizmatlar</h5>
-          <p class="card-text">Avtomobil ta'mirlash va boshqa xizmatlar.</p>
-           <!-- Yangilangan link -->
-          <a routerLink="/listings/xizmatlar" class="btn btn-secondary">Ko'rish</a>
-        </div>
+       <div class="text-center mt-4">
+          <a routerLink="/listings" class="btn btn-outline-secondary">Barcha E'lonlarni Ko'rish</a>
       </div>
-    </div>
   </div>

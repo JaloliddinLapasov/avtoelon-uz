@@ -1,5 +1,58 @@
-<footer class="footer mt-auto py-3 bg-light">
-    <div class="container text-center">
-      <span class="text-muted">avtoeloncha &copy; {{ currentYear }}</span>
+<footer class="footer bg-dark text-white pt-5 pb-4">
+    <div class="container text-center text-md-start">
+      <div class="row">
+        <!-- Brand/About Section -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="bi bi-gem me-3"></i>Avtoelon Clone
+          </h6>
+          <p>
+            O'zbekistondagi avtomobillar, ehtiyot qismlar va xizmatlar uchun yetakchi onlayn platforma.
+          </p>
+        </div>
+
+        <!-- Links Section 1 -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">
+            Kategoriyalar
+          </h6>
+          <p><a routerLink="/listings/yengil-avtomobillar" class="text-reset">Yengil Avto</a></p>
+          <p><a routerLink="/listings/ehtiyot-qismlar" class="text-reset">Ehtiyot Qismlar</a></p>
+          <p><a routerLink="/listings/xizmatlar" class="text-reset">Xizmatlar</a></p>
+          <p><a routerLink="/listings" class="text-reset">Barchasi</a></p>
+        </div>
+
+        <!-- Links Section 2 -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">
+            Foydali Havolalar
+          </h6>
+          <p><a routerLink="/create-ad" class="text-reset">E'lon Berish</a></p>
+          <p><a routerLink="/about" class="text-reset">Biz Haqimizda</a></p>
+          <p><a href="#!" class="text-reset">Yordam</a></p> <!-- Placeholder -->
+          <p><a href="#!" class="text-reset">Foydalanish Shartlari</a></p> <!-- Placeholder -->
+        </div>
+
+        <!-- Contact Section -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">Aloqa</h6>
+          <p><i class="bi bi-geo-alt-fill me-3"></i> Toshkent, O'zbekiston </p>
+          <p><i class="bi bi-envelope-fill me-3"></i> info&#64;avtoeloncha.uz</p>
+          <p><i class="bi bi-telephone-fill me-3"></i> + 998 94 024 08 73</p>
+          <!-- Social Media Links -->
+           <div class="mt-3">
+              <a href="#!" class="text-reset me-3"><i class="bi bi-facebook fs-4"></i></a>
+              <a href="#!" class="text-reset me-3"><i class="bi bi-telegram fs-4"></i></a>
+              <a href="#!" class="text-reset me-3"><i class="bi bi-instagram fs-4"></i></a>
+              <a href="#!" class="text-reset me-3"><i class="bi bi-youtube fs-4"></i></a>
+           </div>
+        </div>
+      </div>
+    </div>
+
+     <!-- Copyright -->
+    <div class="text-center p-4 mt-4" style="background-color: rgba(0, 0, 0, 0.05);">
+      © {{ currentYear }} Copyright:
+      <a class="text-reset fw-bold" routerLink="/">avtoeloncha.uz</a> 
     </div>
   </footer>

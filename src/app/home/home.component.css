@@ -1,0 +1,31 @@
+.hero-section {
+    /* Gradient yoki rasm qo'shish mumkin */
+    background: linear-gradient(rgb(22, 53, 253), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1920x600.png/343a40/6c757d?text=Avtomobil+Foni');
+    background-size: cover;
+    background-position: center;
+    color: #fff; /* Ensure text is white */
+  }
+
+  .category-card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  }
+
+  .category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  }
+
+  .listing-card {
+      transition: box-shadow 0.2s ease-in-out;
+      border: none; /* Remove default border */
+  }
+  .listing-card:hover {
+       box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1) !important;
+  }
+  .listing-card .card-img-top {
+      height: 180px;
+      object-fit: cover;
+  }
+   .listing-card .card-title a:hover {
+      color: var(--bs-primary) !important;
+  }
