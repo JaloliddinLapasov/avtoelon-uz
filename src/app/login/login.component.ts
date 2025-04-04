@@ -1,37 +1,49 @@
 import { Component } from '@angular/core';
-    import { CommonModule } from '@angular/common';
-    import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
-    import { RouterLink } from '@angular/router'; // Import RouterLink
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
-    @Component({
-      selector: 'app-login',
-      standalone: true,
-      imports: [CommonModule, ReactiveFormsModule, RouterLink], // Add RouterLink
-      templateUrl: './login.component.html',
-      styleUrls: ['./login.component.css']
-    })
-    export class LoginComponent {
-      loginForm: FormGroup;
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css'],
+  imports:[ReactiveFormsModule,CommonModule],
+})
+export class LoginComponent {
+  loginForm: FormGroup;
+  submitted = false;
+  errorMessage = '';
 
-      constructor(private fb: FormBuilder) {
-        this.loginForm = this.fb.group({
-          email: ['', [Validators.required, Validators.email]],
-          password: ['', Validators.required]
-        });
-      }
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
+  }
 
-      onSubmit() {
-        if (this.loginForm.valid) {
-          console.log('Login attempt:', this.loginForm.value);
-          // TODO: Implement actual login logic (call auth service, handle tokens, etc.)
-          alert('Tizimga kirishga urinish (konsolga qarang). Haqiqiy autentifikatsiya hali yo\'q.');
-          // On success, navigate to a protected area or home page
-          // this.router.navigate(['/']);
-        } else {
-          alert('Email yoki parol noto\'g\'ri yoki kiritilmagan.');
-          this.loginForm.markAllAsTouched();
-        }
-      }
+  get f() { return this.loginForm.controls; }
 
-      get f() { return this.loginForm.controls; }
+  onSubmit() {
+    this.submitted = true;
+
+    if (this.loginForm.invalid) {
+      return;
     }
+
+    this.authService.login(this.loginForm.value).subscribe({
+      next: (response) => {
+        this.authService.saveToken(response.token);
+        // alert("Tizimga muvaffaqiyatli kirdingiz!");
+        this.router.navigate(['/home']);
+      },
+      error: (error) => {
+        this.errorMessage = "Login yoki parol noto‘g‘ri!";
+      }
+    });
+  }
+} 

@@ -1,54 +1,59 @@
 import { Component } from '@angular/core';
-    import { CommonModule } from '@angular/common';
-    import { ReactiveFormsModule, FormBuilder, Validators, FormGroup, AbstractControl, ValidationErrors } from '@angular/forms';
-    import { RouterLink } from '@angular/router';
+import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
-    // Custom Validator for matching passwords
-    export function passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
-      const password = control.get('password');
-      const confirmPassword = control.get('confirmPassword');
+@Component({
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css'],
+  imports: [CommonModule,ReactiveFormsModule],
+})
+export class RegisterComponent {
+  registerForm: FormGroup;
+  submitted = false;
+  errorMessage = '';
 
-      if (password && confirmPassword && password.value !== confirmPassword.value) {
-        return { passwordMismatch: true };
-      }
-      return null;
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
+    this.registerForm = this.fb.group(
+      {
+        username: ['', [Validators.required, Validators.minLength(3)]],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        confirmPassword: ['', Validators.required]
+      },
+      { validators: this.passwordMatchValidator }
+    );
+  }
+
+  get f() { return this.registerForm.controls; }
+
+  passwordMatchValidator(form: AbstractControl): ValidationErrors | null {
+    const password = form.get('password')?.value;
+    const confirmPassword = form.get('confirmPassword')?.value;
+    return password === confirmPassword ? null : { mismatch: true };
+  }
+
+  onSubmit() {
+    this.submitted = true;
+
+    if (this.registerForm.invalid) {
+      return;
     }
 
-    @Component({
-      selector: 'app-register',
-      standalone: true,
-      imports: [CommonModule, ReactiveFormsModule, RouterLink],
-      templateUrl: './register.component.html',
-      styleUrls: ['./register.component.css']
-    })
-    export class RegisterComponent {
-      registerForm: FormGroup;
-
-      constructor(private fb: FormBuilder) {
-        this.registerForm = this.fb.group({
-          username: ['', [Validators.required, Validators.minLength(3)]],
-          email: ['', [Validators.required, Validators.email]],
-          password: ['', [Validators.required, Validators.minLength(6)]],
-          confirmPassword: ['', Validators.required]
-        }, { validators: passwordMatchValidator }); // Apply custom validator to the group
+    this.authService.register(this.registerForm.value).subscribe({
+      next: () => {
+        // alert("Ro‘yxatdan muvaffaqiyatli o‘tdingiz!");
+        this.router.navigate(['/login']);
+      },
+      error: () => {
+        this.errorMessage = "Ro‘yxatdan o‘tishda xatolik!";
       }
-
-      onSubmit() {
-        if (this.registerForm.valid) {
-          console.log('Register attempt:', this.registerForm.value);
-          // TODO: Implement actual registration logic (call API, handle response)
-          // Remove confirmPassword before sending to backend
-          const { confirmPassword, ...userData } = this.registerForm.value;
-          console.log('User data to send:', userData);
-          alert('Ro\'yxatdan o\'tishga urinish (konsolga qarang). Haqiqiy ro\'yxatdan o\'tish hali yo\'q.');
-          // On success, maybe navigate to login page or show success message
-          // this.router.navigate(['/login']);
-        } else {
-          alert('Iltimos, formani to\'g\'ri to\'ldiring.');
-          this.registerForm.markAllAsTouched();
-        }
-      }
-
-       get f() { return this.registerForm.controls; }
-       get formErrors() { return this.registerForm.errors; }
-    }
+    });
+  }
+}

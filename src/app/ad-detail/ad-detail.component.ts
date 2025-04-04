@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-    import { CommonModule } from '@angular/common';
-    import { ActivatedRoute, RouterLink } from '@angular/router'; // Import RouterLink
+import { CommonModule } from '@angular/common';
+import { ActivatedRoute, RouterLink } from '@angular/router'; // Import RouterLink
 
     @Component({
       selector: 'app-ad-detail',
@@ -17,11 +17,7 @@ import { Component, OnInit } from '@angular/core';
         price: '12,000 USD',
         location: 'Toshkent',
         description: 'Bu yerda e\'lon haqida batafsil ma\'lumot bo\'ladi. Avtomobil holati, yurgan masofasi, rangi va boshqa xususiyatlari.',
-        images: [
-            'https://via.placeholder.com/800x600.png?text=Cobalt+View+1',
-            'https://via.placeholder.com/800x600.png?text=Cobalt+View+2',
-            'https://via.placeholder.com/800x600.png?text=Cobalt+View+3'
-        ],
+        images: [ ],
         seller: { name: 'Sotuvchi Ismi', phone: '+998 XX XXX XX XX'}
       };
 

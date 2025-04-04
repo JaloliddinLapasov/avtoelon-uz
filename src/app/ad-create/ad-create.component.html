@@ -1,0 +1,65 @@
+<h1>Yangi E'lon Berish</h1>
+<hr>
+<p>E'loningizni joylashtirish uchun quyidagi formani to'ldiring.</p>
+
+<form [formGroup]="adForm" (ngSubmit)="onSubmit()" novalidate>
+
+  <!-- Title -->
+  <div class="mb-3">
+    <label for="title" class="form-label">Sarlavha <span class="text-danger">*</span></label>
+    <input type="text" class="form-control" id="title" formControlName="title" placeholder="Masalan, Cobalt 2 pozitsiya sotiladi">
+  </div>
+
+  <!-- Category -->
+  <div class="mb-3">
+    <label for="category" class="form-label">Kategoriya <span class="text-danger">*</span></label>
+    <select class="form-select" id="category" formControlName="category">
+      <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+    </select>
+  </div>
+
+  <!-- Price & Currency -->
+  <div class="row mb-3">
+    <div class="col-md-8">
+      <label for="price" class="form-label">Narx <span class="text-danger">*</span></label>
+      <input type="text" class="form-control" id="price" formControlName="price">
+    </div>
+    <div class="col-md-4">
+      <label for="currency" class="form-label">Valyuta <span class="text-danger">*</span></label>
+      <select class="form-select" id="currency" formControlName="currency">
+        <option *ngFor="let cur of currencies" [value]="cur">{{ cur }}</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Location -->
+  <div class="mb-3">
+    <label for="location" class="form-label">Joylashuv <span class="text-danger">*</span></label>
+    <select class="form-select" id="location" formControlName="location">
+      <option *ngFor="let loc of locations" [value]="loc">{{ loc }}</option>
+    </select>
+  </div>
+
+  <!-- Image Upload -->
+  <div class="mb-3">
+    <label for="images" class="form-label">Rasm yuklash</label>
+    <input class="form-control" type="file" id="images" (change)="onFileChange($event)">
+  </div>
+
+  <hr>
+  <h3>Aloqa Ma'lumotlari</h3>
+
+  <!-- Contact Name -->
+  <div class="mb-3">
+    <label for="contactName" class="form-label">Ismingiz <span class="text-danger">*</span></label>
+    <input type="text" class="form-control" id="contactName" formControlName="contactName">
+  </div>
+
+  <!-- Contact Phone -->
+  <div class="mb-3">
+    <label for="contactPhone" class="form-label">Telefon Raqamingiz <span class="text-danger">*</span></label>
+    <input type="tel" class="form-control" id="contactPhone" formControlName="contactPhone">
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-lg" [disabled]="adForm.invalid">E'lonni Joylashtirish</button>
+</form>

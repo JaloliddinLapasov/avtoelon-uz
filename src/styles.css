@@ -1,5 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global stillar */
 body {
-    padding-top: 56px; /* Adjust based on your header height */
-    background-color: #f8f9fa; /* Light background similar to avtoelon */
-  }
+  padding-top: 56px; /* Fixed header uchun joy */
+  background-color: #f8f9fa; /* Orqa fon rangi */
+  min-height: 100vh; /* Footer pastga yopishishi uchun */
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+   flex: 1; /* Asosiy kontent qolgan joyni egallashi uchun */
+}
+
+/* Bootstrap form validation stillari */
+.form-control.is-invalid, .form-select.is-invalid {
+    border-color: var(--bs-danger);
+}
+.form-control.is-valid, .form-select.is-valid {
+    border-color: var(--bs-success);
+}
+.invalid-feedback {
+    display: block; /* Xatolik xabarini ko'rsatish */
+    color: var(--bs-danger);
+    font-size: 0.875em;
+}
+ .valid-feedback {
+    display: block;
+    color: var(--bs-success);
+    font-size: 0.875em;
+}
+
+/* Linklar uchun */
+a {
+    cursor: pointer;
+}

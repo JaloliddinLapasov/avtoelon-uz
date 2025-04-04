@@ -1,25 +1,25 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { AboutComponent } from './about/about.component';
 import { CarsComponent } from './cars/cars.component';
 import { ContactComponent } from './contact/contact.component';
-import { AppRoutingModule } from './app-routing.module';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { AdDetailComponent } from './ad-detail/ad-detail.component';
 import { ListingsComponent } from './listings/listings.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AdListComponent } from './ad-list/ad-list.component';
+import { AdCreateComponent } from './ad-create/ad-create.component';
 
-@NgModule({
-    declarations: [
-        
-    ],
     imports: [
+        HttpClientModule,
         BrowserModule,
-        AppRoutingModule,
+        ReactiveFormsModule,
+        ReactiveFormsModule ,
         FormsModule,
         AppComponent,
         HeaderComponent,
@@ -29,9 +29,8 @@ import { ListingsComponent } from './listings/listings.component';
         FooterComponent,
         HomeComponent,
         AdDetailComponent,
-        ListingsComponent
-    ],
-    providers: [],
-    // bootstrap: [AppComponent]
-})
+        ListingsComponent,
+        AdListComponent,
+        AdCreateComponent
+    ]
 export class AppModule { }

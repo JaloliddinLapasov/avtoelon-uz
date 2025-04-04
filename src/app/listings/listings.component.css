@@ -1,11 +1,18 @@
-.card-img-top {
-    height: 200px;
+.listing-card {
+    transition: box-shadow 0.2s ease-in-out;
+    border: none;
+}
+.listing-card:hover {
+     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1) !important;
+}
+.listing-card .card-img-top {
+    height: 180px;
     object-fit: cover;
-  }
-  .card-title a {
-      text-decoration: none;
-      color: inherit;
-  }
-  .card-title a:hover {
-      color: var(--bs-primary);
-  }
+    background-color: #f8f9fa; /* Rasm yo'q bo'lsa fon */
+}
+ .listing-card .card-title a:hover {
+    color: var(--bs-primary) !important;
+}
+.page-link {
+    cursor: pointer;
+}

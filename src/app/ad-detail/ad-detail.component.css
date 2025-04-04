@@ -1,10 +1,11 @@
 .carousel-item img {
-    max-height: 500px; /* Limit carousel image height */
-    object-fit: contain; /* Ensure image fits without distortion */
-    background-color: #eee; /* Background for images that don't fill space */
+    max-height: 500px;
+    object-fit: contain;
+    background-color: #eee;
 }
 .card-title.text-primary {
-    font-size: 1.75rem; /* Make price stand out */
+    font-size: 1.75rem;
 }
-/* Add Bootstrap Icons CSS if you plan to use them */
-/* @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"); */
+p[style*="white-space: pre-wrap"] {
+    font-family: inherit; /* Brauzer defaultini ishlatish */
+}

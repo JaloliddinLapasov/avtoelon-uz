@@ -1,15 +1,13 @@
 .footer a {
-    text-decoration: none; /* Remove underline from links */
-    transition: color 0.2s ease-in-out;
-  }
-
-  .footer a:hover {
-    color: var(--bs-warning) !important; /* Change link color on hover */
-  }
-
-  .footer .bi { /* Social icons */
-     transition: color 0.2s ease-in-out;
-  }
-   .footer .bi:hover {
-     color: var(--bs-warning) !important;
-  }
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+.footer a:hover {
+  color: var(--bs-warning) !important;
+}
+.footer .bi {
+   transition: color 0.2s ease-in-out;
+}
+ .footer .bi:hover {
+   color: var(--bs-warning) !important;
+}
