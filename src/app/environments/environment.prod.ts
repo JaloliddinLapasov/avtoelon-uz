@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
     // !!! PRODUCTION API MANZILINI KIRITING !!!
-    apiUrl: 'https://localhost:5001/api'
+    apiUrl: 'https://localhost:5235'
   };

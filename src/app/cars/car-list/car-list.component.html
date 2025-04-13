@@ -1,0 +1,17 @@
+<div class="container mt-4">
+  <div class="row">
+    <div *ngFor="let car of cars" class="col-md-4 mb-4">
+      <div class="card h-100 shadow">
+        <img *ngIf="car.carPicturesNames?.length" [src]="'http://localhost:5235/Images/' + car.carPicturesNames[0]"
+          class="card-img-top" style="object-fit: cover; height: 200px;" alt="Car Image" />
+        <div class="card-body">
+          <h5 class="card-title">{{ car.name }}</h5>
+          <p class="card-text">{{ car.description }}</p>
+          <p><strong>Narx:</strong> {{ car.price }} {{ getEnumKey(currencyEnum, car.currency) }}</p>
+          <p><strong>Joylashuv:</strong> {{ getEnumKey(locationEnum, car.location) }}</p>
+          <button class="btn btn-primary" (click)="viewDetails(car)">Batafsil</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

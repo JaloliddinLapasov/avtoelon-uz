@@ -1,0 +1,82 @@
+<div class="container mt-5">
+  <h2>{{ id ? 'Avtomobilni tahrirlash' : 'Yangi avtomobil qo\'shish' }}</h2>
+  <form [formGroup]="form" (ngSubmit)="saqlash()">
+    <div *ngIf="car?.carPicturesNames?.length">
+      <img [src]="'http://localhost:5235/Images/' + car.carPicturesNames[0]"
+           style="max-width: 300px;" alt="Avtomobil rasmi">
+    </div>
+    <div *ngIf="!car?.carPicturesNames?.length">
+      <p>Rasm mavjud emas</p>
+    </div>
+
+    <label for="image" class="form-label">Rasm</label>
+  <input type="file" class="form-control" id="image" (change)="onFileChange($event)">
+  <div *ngIf="form.controls['image'].invalid && (form.controls['image'].dirty || form.controls['image'].touched)" class="text-danger">
+    <div *ngIf="form.controls['image'].errors?.['required']">Rasm majburiy.</div>
+  </div>
+  <div *ngIf="selectedImage">
+    <img [src]="selectedImage" style="max-width: 300px;" alt="Tanlangan rasm">
+  </div>
+  <div *ngIf="car?.carPicturesNames?.length && !selectedImage">
+    <img [src]="'http://localhost:5235/Images/' + car.carPicturesNames[0]"
+         style="max-width: 300px;" alt="Mavjud rasm">
+  </div>
+
+    <div class="mb-3">
+      <label for="name" class="form-label">Nomi</label>
+      <input type="text" class="form-control" id="name" formControlName="name">
+      <div *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)" class="text-danger">
+        <div *ngIf="form.controls['name'].errors?.['required']">Avtomobil nomi majburiy.</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Ta'rifi</label>
+      <textarea class="form-control" id="description" formControlName="description"></textarea>
+      <div *ngIf="form.controls['description'].invalid && (form.controls['description'].dirty || form.controls['description'].touched)" class="text-danger">
+        <div *ngIf="form.controls['description'].errors?.['required']">Ta'rif majburiy.</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="price" class="form-label">Narxi</label>
+      <input type="number" class="form-control" id="price" formControlName="price">
+      <div *ngIf="form.controls['price'].invalid && (form.controls['price'].dirty || form.controls['price'].touched)" class="text-danger">
+        <div *ngIf="form.controls['price'].errors?.['required']">Narx majburiy.</div>
+        <div *ngIf="form.controls['price'].errors?.['min']">Narx 0 dan kam bo'lishi mumkin emas.</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="contactPhone" class="form-label">Telefon raqami</label>
+      <input type="text" class="form-control" id="contactPhone" formControlName="contactPhone">
+      <div *ngIf="form.controls['contactPhone'].invalid && (form.controls['contactPhone'].dirty || form.controls['contactPhone'].touched)" class="text-danger">
+        <div *ngIf="form.controls['contactPhone'].errors?.['required']">Telefon raqami majburiy.</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="category" class="form-label">Kategoriya</label>
+      <select class="form-select" id="category" formControlName="category">
+        <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="location" class="form-label">Joylashuv</label>
+      <select class="form-select"  id="location" formControlName="location">
+        <option *ngFor="let loc of locations" [value]="loc">{{ loc }}</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="currency" class="form-label">Valyuta</label>
+      <select class="form-select" id="currency" formControlName="currency">
+        <option *ngFor="let curr of currencies" [value]="curr">{{ curr }}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary me-2" [disabled]="form.invalid">Saqlash</button>
+    <button type="button" class="btn btn-secondary" (click)="bekorQilish()">Bekor qilish</button>
+  </form>
+</div>

@@ -1,39 +1,43 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" routerLink="/">avtoeloncha</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Bosh sahifa</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/listings" routerLinkActive="active">E'lonlar</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/cars" routerLinkActive="active">Avtomobillar</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/about" routerLinkActive="active">Biz Haqimizda</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/contact" routerLinkActive="active">Aloqa</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav ms-auto">
-           <li class="nav-item">
-              <!-- Changed to routerLink -->
-              <a class="btn btn-warning" routerLink="/ad-create">E'lon Berish</a>
-           </li>
-           <li class="nav-item ms-2">
-            <a class="nav-link" routerLink="/login" routerLinkActive="active">Kirish</a>
-         </li>
-         <li class="nav-item ms-2">
-            <a class="nav-link" routerLink="/register" routerLinkActive="active">Ro'yxatdan o'tish</a>
-         </li>
-        </ul>
-      </div>
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">avtoeloncha</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Bosh sahifa</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/car-list" routerLinkActive="active">E'lonlar</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about" routerLinkActive="active">Biz Haqimizda</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contact" routerLinkActive="active">Aloqa</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="btn btn-warning" (click)="onAdCreate()">E'lon Berish</a>
+          <!-- <a routerLink="/new" class="btn btn-outline-light btn-lg px-4">E'lon Berish</a> -->
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/car-list" routerLinkActive="active">Mening e'lonlarim</a>
+        </li>
+
+        <div class="d-flex">
+          <a class="btn btn-outline-primary me-2" routerLink="/login" *ngIf="!isLoggedIn">Login</a>
+          <a class="btn btn-outline-primary me-2" routerLink="/register" *ngIf="!isLoggedIn">Register</a>
+          <button class="btn btn-outline-danger" (click)="logout()" *ngIf="isLoggedIn">Logout</button>
+        </div>
+
+        
+
+      </ul>
     </div>
-  </nav>
+  </div>
+</nav>

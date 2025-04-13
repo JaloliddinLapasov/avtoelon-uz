@@ -1,55 +1,81 @@
 <h1>Aloqa</h1>
-    <hr>
-    <p>Biz bilan bog'lanish uchun quyidagi formani to'ldiring yoki ko'rsatilgan ma'lumotlardan foydalaning.</p>
+<hr>
+<p>Biz bilan bog'lanish uchun quyidagi formani to'ldiring yoki ko'rsatilgan ma'lumotlardan foydalaning.</p>
 
-    <div class="row">
-      <div class="col-md-6">
-        <h3>Bog'lanish Formasi</h3>
-        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-          <div class="mb-3">
-            <label for="name" class="form-label">Ismingiz</label>
-            <input type="text" class="form-control" id="name" formControlName="name" required>
-                <div *ngIf="contactForm.get('name')?.invalid && (contactForm.get('name')?.dirty || contactForm.get('name')?.touched)">
-
-              Ism kiritilishi shart.
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Email Manzilingiz</label>
-            <input type="email" class="form-control" id="email" formControlName="email" required><div *ngIf="contactForm.get('email')?.invalid && (contactForm.get('email')?.dirty || contactForm.get('email')?.touched)">
-               <span *ngIf="contactForm.get('email')?.errors?.['required']">Email kiritilishi shart.</span>
-               <span *ngIf="contactForm.get('email')?.errors?.['email']">Yaroqli email manzil kiriting.</span>
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="subject" class="form-label">Mavzu</label>
-            <input type="text" class="form-control" id="subject" formControlName="subject" required>
-            <div *ngIf="contactForm.get('subject')?.invalid && (contactForm.get('subject')?.dirty || contactForm.get('subject')?.touched)">
-
-              Mavzu kiritilishi shart.
-            </div>
-          </div>
-          <div class="mb-3">
-            <label for="message" class="form-label">Xabar</label>
-            <textarea class="form-control" id="message" rows="5" formControlName="message" required></textarea>
-            <div *ngIf="contactForm.get('message')?.invalid && (contactForm.get('message')?.dirty || contactForm.get('message')?.touched)">
-
-              Xabar kiritilishi shart.
-            </div>
-          </div>
-          <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid">Yuborish</button>
-        </form>
-      </div>
-      <div class="col-md-6">
-        <h3>Bizning Manzilimiz</h3>
-        <p>
-          <strong>Manzil:</strong> Toshkent sh., Sergeli t., PDP University<br>
-          <strong>Telefon:</strong> +998 94 024 08 73<br>
-          <strong>Email:</strong> jaloliddin630&#64;gmail.com
-        </p>
-        <!-- Bu yerga xarita (map) qo'shish mumkin -->
-        <div style="height: 300px; background-color: #e9ecef; display: flex; align-items: center; justify-content: center; color: #6c757d;">
-          Xarita uchun joy
-        </div>
-      </div>
+<div class="row">
+  <div class="col-md-6">
+    <h2>Biz bilan bog'lanish</h2>
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Foydalanuvchi nomingiz:</label>
+    <input type="text" id="name" class="form-control" formControlName="name">
+    <div *ngIf="submitted && f['name']?.errors" class="error-message">
+      <div *ngIf="f['name']?.errors?.['required']">Ismingizni kiriting.</div>
     </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email manzilingiz:</label>
+    <input type="email" id="email" class="form-control" formControlName="email">
+    <div *ngIf="submitted && f['email']?.errors" class="error-message">
+      <div *ngIf="f['email']?.errors?.['required']">Email manzilingizni kiriting.</div>
+      <div *ngIf="f['email']?.errors?.['email']">Noto'g'ri email format.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="subject">Yoshingiz:</label>
+    <input type="number" id="subject" class="form-control" formControlName="subject">
+    <div *ngIf="submitted && f['subject']?.errors" class="error-message">
+      <div *ngIf="f['subject']?.errors?.['required']">Yoshingizni kiriting.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="fullname">To'liq ismingiz:</label>
+    <input type="text" id="fullname" class="form-control" formControlName="fullname">
+    <div *ngIf="submitted && f['fullname']?.errors" class="error-message">
+      <div *ngIf="f['fullname']?.errors?.['required']">To'liq ismingizni kiriting.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="theme">Mavzu:</label>
+    <input type="text" id="theme" class="form-control" formControlName="theme">
+    <div *ngIf="submitted && f['theme']?.errors" class="error-message">
+      <div *ngIf="f['theme']?.errors?.['required']">Mavzuni kiriting.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="message">Xabaringiz:</label>
+    <textarea id="message" class="form-control" formControlName="message" rows="5"></textarea>
+    <div *ngIf="submitted && f['message']?.errors" class="error-message">
+      <div *ngIf="f['message']?.errors?.['required']">Xabaringizni kiriting.</div>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Yuborish</button>
+
+  <div *ngIf="successMessage" class="alert alert-success mt-3">{{ successMessage }}</div>
+  <div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
+</form>
+  </div>
+  <div class="col-md-6">
+   
+   
+   
+   
+    <h3>Bizning Manzilimiz</h3>
+    <p>
+      <strong>Manzil:</strong> Toshkent sh., Sergeli t., PDP University<br>
+      <strong>Telefon:</strong> +998 94 024 08 73<br>
+      <strong>Email:</strong> jaloliddin630&#64;gmail.com
+    </p>
+    <!-- <div style="height: 300px; background-color: #e9ecef; display: flex; align-items: center; justify-content: center; color: #6c757d;">
+      Xarita uchun joy
+      
+    </div> -->
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3716.0419640932205!2d69.22242969999999!3d41.222475599999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae6183ea313917%3A0xdc59607ad734d20c!2sPDP%20University!5e1!3m2!1sru!2s!4v1743750024598!5m2!1sru!2s" width="700" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</div>

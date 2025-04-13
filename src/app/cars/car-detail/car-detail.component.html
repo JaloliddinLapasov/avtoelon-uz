@@ -1,0 +1,65 @@
+<div class="container mt-4">
+  <div *ngIf="car" class="card shadow-lg">
+    <div class="row g-0">
+      <div class="col-md-6">
+        <div *ngIf="car.carPicturesNames.length > 0; else noImage"> <img [src]="'http://localhost:5235/Images/' + car.carPicturesNames[0]"
+            class="img-fluid rounded-start" alt="Car Image" /> </div>
+
+        <ng-template #noImage>
+          <div class="text-center p-5">
+            <p class="text-muted">Rasm mavjud emas</p>
+          </div>
+        </ng-template>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card-body">
+          <h3 class="card-title">{{ car.name }}</h3>
+          <p class="card-text">{{ car.description }}</p>
+
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <strong>Narxi:</strong> {{ car.price | number }} {{ getEnumKey(currencyEnum, +car.currency) }}
+            </li>
+            <li class="list-group-item">
+              <strong>Kategoriya:</strong> {{ getEnumKey(categoryEnum, +car.category) }}
+            </li>
+            <li class="list-group-item">
+              <strong>Joylashuv:</strong> {{ getEnumKey(locationEnum, +car.location) }}
+            </li>
+            <li class="list-group-item">
+              <strong>Telefon:</strong> {{ car.contactPhone }}
+            </li>
+            <li class="list-group-item">
+              <strong>Elon beruvchi:</strong> {{ car.contactName }}
+            </li>
+            <li class="list-group-item">
+              <strong>Qo‘shilgan vaqti:</strong> {{ car.createdAt | date:'medium' }}
+            </li>
+          </ul>
+
+          <div class="mt-4 d-flex justify-content-between">
+            <button class="btn btn-primary" (click)="editCar()">Tahrirlash</button>
+            <button class="btn btn-danger" (click)="deleteCar()">O‘chirish</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div *ngIf="car.carPicturesNames.length > 1" class="mt-4 p-3">
+      <h5>Qo‘shimcha rasmlar:</h5>
+      <div class="d-flex flex-wrap gap-2">
+        <img
+          *ngFor="let pic of car.carPicturesNames.slice(1)"
+          [src]="'http://localhost:5235/uploads/' + pic"
+          class="img-thumbnail"
+          style="width: 120px; height: auto;"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!car" class="alert alert-warning text-center mt-5">
+    Ma'lumotlar yuklanmoqda yoki mavjud emas.
+  </div> -->
+</div>

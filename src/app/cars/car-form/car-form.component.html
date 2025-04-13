@@ -1,0 +1,76 @@
+<div class="container mt-5">
+  <h2>Yangi mashina qo‘shish</h2>
+  <form [formGroup]="carForm" (ngSubmit)="onSubmit()">
+    <div class="form-group mb-3">
+      <label>Nom</label>
+      <input class="form-control" formControlName="carName" required>
+    </div>
+
+    <div class="form-group mb-3">
+      <label>Ta'rif</label>
+      <textarea class="form-control" formControlName="description" required></textarea>
+    </div>
+
+    <div class="form-group mb-3">
+      <label>Narxi</label>
+      <input type="number" class="form-control" formControlName="carPrice" required>
+    </div>
+
+    <div class="form-group mb-3">
+      <label>Telefon raqam</label>
+      <input class="form-control" formControlName="contactPhone" required>
+    </div>
+
+
+    <div class="col-md-4 mb-3">
+      <label for="category" class="form-label">Turkum</label>
+      <select id="category" formControlName="category" class="form-select">
+        <option value="">Tanlang</option>
+        <option value="yengil_avtomobillar">YengilAvtomobillar</option>
+        <option value="extiyot_qisimlar">EhtiyotQismlar</option>
+        <option value="xizmatlar">Xizmatlar</option>
+      </select>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <label for="location" class="form-label">Hudud</label>
+      <select id="location" formControlName="location" class="form-select">
+        <option value="">Tanlang</option>
+        <option value="Andijon">Andijon</option>
+        <option value="Buxoro">Buxoro</option>
+        <option value="Farg'ona">Farg'ona</option>
+        <option value="Jizzax">Jizzax</option>
+        <option value="Xorazm">Xorazm</option>
+        <option value="Navoiy">Navoiy</option>
+        <option value="Namangan">Namangan</option>
+        <option value="Samarkand">Samarkand</option>
+        <option value="Sirdaryo">Sirdaryo</option>
+        <option value="Toshkent">Toshkent</option>
+        <option value="Surxandaryo">Surxandaryo</option>
+        <option value="Qashqadaryo">Qashqadaryo</option>
+      </select>
+    </div>
+  
+    <div class="col-md-4 mb-3">
+      <label for="currency" class="form-label">Valyuta</label>
+      <select id="currency" formControlName="currency" class="form-select">
+        <option value="">Tanlang</option>
+        <option value="usd">USD</option>
+        <option value="uzs">UZS</option>
+        <option value="rub">RUB</option>
+      </select>
+    </div>
+
+    <div class="form-group mb-3">
+      <label>Rasmlar (5 tagacha)</label>
+      <input type="file" class="form-control" (change)="onFileSelected($event)" multiple accept="image/*">
+      <div class="mt-2 d-flex flex-wrap gap-2">
+        <img *ngFor="let preview of imagePreviews" [src]="preview" class="img-thumbnail" width="100" height="100">
+      </div>
+    </div>
+
+    <button class="btn btn-success" type="submit" [disabled]="isSubmitting">
+      {{ isSubmitting ? 'Yuborilmoqda...' : 'Yaratish' }}
+    </button>
+  </form>
+</div>

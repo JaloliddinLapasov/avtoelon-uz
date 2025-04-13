@@ -1,62 +1,50 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card shadow-sm">
-        <div class="card-body">
-          <h1 class="text-center">Ro‘yxatdan o‘tish</h1>
+      <div class="col-md-6">
+          <div class="card shadow-sm">
+              <div class="card-body">
+                  <h1 class="text-center">Ro‘yxatdan o‘tish</h1>
 
-          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-            <div class="mb-3">
-              <label for="username" class="form-label">Foydalanuvchi nomi</label>
-              <input type="text" id="username" class="form-control" formControlName="username">
-              <div *ngIf="submitted && registerForm.get('username')?.errors" class="text-danger">
-                <div *ngIf="registerForm.get('username')?.errors?.['required']">
-                  Foydalanuvchi nomi majburiy
-                </div>
-                <div *ngIf="registerForm.get('username')?.errors?.['minlength']">
-                  Kamida 3 ta belgi bo‘lishi kerak.
-                </div>
+                  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                      <div class="mb-3">
+                          <label for="username" class="form-label">Foydalanuvchi nomi</label>
+                          <input type="text" id="username" class="form-control" formControlName="username">
+                          <div *ngIf="submitted && registerForm.get('username')?.errors" class="text-danger">
+                              <div *ngIf="registerForm.get('username')?.errors?.['required']">
+                                  Foydalanuvchi nomi majburiy
+                              </div>
+                              <div *ngIf="registerForm.get('username')?.errors?.['minlength']">
+                                  Kamida 3 ta belgi bo‘lishi kerak.
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="mb-3">
+                          <label for="email" class="form-label">Email</label>
+                          <input type="email" id="email" class="form-control" formControlName="email">
+                          <div *ngIf="submitted && registerForm.get('email')?.errors" class="text-danger">
+                              <div *ngIf="registerForm.get('email')?.errors?.['required']">Email talab qilinadi.</div>
+                              <div *ngIf="registerForm.get('email')?.errors?.['email']">Noto‘g‘ri email formati.</div>
+                          </div>
+                      </div>
+
+                      <div class="mb-3">
+                          <label for="password" class="form-label">Parol</label>
+                          <input type="password" id="password" class="form-control" formControlName="password">
+                          <div *ngIf="submitted && registerForm.get('password')?.errors" class="text-danger">
+                              <div *ngIf="registerForm.get('password')?.errors?.['required']">Parol talab qilinadi.</div>
+                              <div *ngIf="registerForm.get('password')?.errors?.['minlength']">Kamida 6 ta belgi bo‘lishi kerak.</div>
+                          </div>
+                      </div>
+
+                      <div class="d-grid">
+                          <button type="submit" class="btn btn-primary">Ro‘yxatdan o‘tish</button>
+                      </div>
+
+                      <div *ngIf="errorMessage" class="text-danger mt-3">{{ errorMessage }}</div>
+                  </form>
               </div>
-            </div>
-
-            <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" id="email" class="form-control" formControlName="email">
-              <div *ngIf="submitted && registerForm.get('email')?.errors" class="text-danger">
-                <div *ngIf="registerForm.get('email')?.errors?.['required']">Email talab qilinadi.</div>
-                <div *ngIf="registerForm.get('email')?.errors?.['email']">Noto‘g‘ri email formati.</div>
-              </div>
-            </div>
-
-            <div class="mb-3">
-              <label for="password" class="form-label">Parol</label>
-              <input type="password" id="password" class="form-control" formControlName="password">
-              <div *ngIf="submitted && registerForm.get('password')?.errors" class="text-danger">
-                <div *ngIf="registerForm.get('password')?.errors?.['required']">Parol talab qilinadi.</div>
-                <div *ngIf="registerForm.get('password')?.errors?.['minlength']">Kamida 6 ta belgi bo‘lishi kerak.</div>
-              </div>
-            </div>
-
-            <div class="mb-3">
-              <label for="confirmPassword" class="form-label">Parolni tasdiqlash</label>
-              <input type="password" id="confirmPassword" class="form-control" formControlName="confirmPassword">
-              <div *ngIf="submitted && registerForm.get('confirmPassword')?.errors" class="text-danger">
-                <div *ngIf="registerForm.get('confirmPassword')?.errors?.['required']">Parolni tasdiqlash talab qilinadi.</div>
-              </div>
-              <div *ngIf="submitted && registerForm.errors?.['mismatch']" class="text-danger">
-                Parollar mos kelmadi!
-              </div>
-            </div>
-
-            <div class="d-grid">
-              <button type="submit" class="btn btn-primary">Ro‘yxatdan o‘tish</button>
-            </div>
-
-            <div *ngIf="errorMessage" class="text-danger mt-3">{{ errorMessage }}</div>
-          </form>
-
-        </div>
+          </div>
       </div>
-    </div>
   </div>
 </div>
